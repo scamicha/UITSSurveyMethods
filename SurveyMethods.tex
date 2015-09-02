@@ -1,0 +1,188 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Thin Sectioned Essay
+% LaTeX Template
+% Version 1.0 (3/8/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original Author:
+% Nicolas Diaz (nsdiaz@uc.cl) with extensive modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[12pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate
+                                % environments and the bibliography
+
+\usepackage{longtable}
+\usepackage{caption}
+\usepackage{url}
+\usepackage{float}
+\usepackage{times}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{times}
+\usepackage{paralist}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{longtable}
+%\usepackage[hypertex]{hyperref}
+\usepackage{subfigure}
+\usepackage{color}
+\usepackage{ifpdf}
+\usepackage{float}
+\usepackage{texdraw}
+\usepackage{epsf}
+\usepackage{array}
+\usepackage{cite}
+\usepackage{enumitem}
+\usepackage{verbatim}
+\usepackage{setspace}
+\sloppy
+\usepackage{geometry}
+\usepackage{amsmath}
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{50pt} % Some vertical space between the title and author name
+
+{\large\@author} % Author name
+\\\@date % Date
+
+\vspace{40pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{Methodology and Design of UITS Satisfaction Survey and Analysis}\\ % Title
+Confirming the Delight of Users Across the State} % Subtitle
+
+\author{\textsc{Scott Michael, Takyua Noguchi, and Yan Zhou} % Author
+\\{\textit{Research Analytics,\\
+                University Information Technology Services,\\ 
+                Indiana University, Bloomington, IN, 47408}}} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT AND KEYWORDS
+%----------------------------------------------------------------------------------------
+
+%\renewcommand{\abstractname}{Summary} % Uncomment to change the name of the abstract to something else
+
+\begin{abstract}
+A brief document to summarize the collection and analysis of survey data for the UITS survey.
+\end{abstract}
+
+\hspace*{3,6mm}\textit{Keywords:} Data Analysis, Survey Methodology % Keywords
+
+\vspace{30pt} % Some vertical space between the abstract and first section
+
+%----------------------------------------------------------------------------------------
+%	ESSAY BODY
+%----------------------------------------------------------------------------------------
+
+\section*{Introduction}
+
+
+%------------------------------------------------
+
+\section*{Survey Design and Methodology}
+
+
+%------------------------------------------------
+
+\section*{Analysis of Survey Data}
+
+{\bf (This section will begin by describing the data format and delivery by CSR. The framework for the
+  analysis follows)}
+
+The following analysis is based primarily on \cite{Levy}. Let $N$ be the total population number of all
+possible survey participants (i.e. the total count of all students, faculty and staff) and $n$ be the number
+of participants who responded to a given survey item. For a given {\it strata} or sub-population $h$, $N_h$
+represents the total number of possible survey participants in that sub-population (e.g. $N_{\mathrm{fac}}$ is
+the total number of faculty members) and $n_h$ is the number of participants from that sub-population who
+responded to a given survey item. 
+
+Following from box 5.2 from \cite{Levy}, to evaluate the sample mean of a particular response to a Likert style
+question $\bar{x}$ we first compute the sample mean for each of the strata for which the question was
+administered. For individual responses $x_i$ the sample mean for a strata $\bar{x}_h$ is
+\begin{equation}
+\bar{x}_h=\frac{\sum\limits_{i=1}^{n_h}x_{h,i}}{n_h}
+\end{equation} 
+we can then weight the strata sample means according to the population numbers, where the weight for a
+particular strata is defined as
+\begin{equation}
+W_h =\frac{N_h}{N}
+\end{equation}
+and
+\begin{equation}
+\bar{x}=\frac{\sum\limits_{h=1}^L N_h \bar{x}_h}{N}=\sum\limits_{h=1}^L W_h \bar{x}_h\mbox{,}
+\end{equation}
+where $L$ is the number of strata. The estimated variance of a particular strata $h$ can be computed by
+\begin{equation}
+\sigma^2_{hx}=\frac{\sum\limits_{i=1}^{n_h}(x_{h,i}-\bar{x}_h)^2}{n_h-1}\mbox{.}
+\end{equation}
+The standard error estimate for the entire population is then given by:
+\begin{equation}
+SE(\bar{x})=\sqrt{\sum\limits_{h=1}^L \left( \frac{N_h}{N} \right)^2\frac{\sigma^2_{hx}}{n_h} \left( \frac{N_h-n_h}{N_h} \right) }\mbox{.}
+\end{equation}
+
+When calculating a proportion (e.g. percentage of satisfied (3, 4, or 5 on the Likert scale) or highly
+satisfied (4 or 5 on the Likert scale) users) estimated proportion for a given sample in a strata $h$, $p_{hy}$, with $y$ being the
+dichotomous variable of either ``satisfied'' or ``not satisfied'' is given by:
+\begin{equation}
+p_{hy}=\frac{\sum\limits_{i=1}^{n_h} y_{hi}}{n_h}\mbox{.}
+\end{equation}
+The proportion for the entire population is then given by:
+\begin{equation}
+p_y=\frac{\sum\limits_{h=1}^L N_h p_{hy}}{N}\mbox{,}
+\end{equation}
+with standard error:
+\begin{equation}
+SE(p_y)=\sqrt{\sum\limits_{h=1}^L\left(\frac{N_h}{N}\right)^2\frac{p_{hy}\left(1-p_{hy}\right)}{n_h-1}\left(\frac{N_h-n_h}{N_h}\right)}
+\end{equation}
+As always, 95\% confidence intervals can be computed for a variable $x$ by $x \pm 1.96 SE(x)$.
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\bibliographystyle{unsrt}
+
+\bibliography{SurveyMethods}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
